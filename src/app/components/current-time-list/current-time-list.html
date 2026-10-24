@@ -1,0 +1,26 @@
+<div class="container">
+    <ul [class]="color()">
+        @for(listedTimeZone of listedTimeZones(); track listedTimeZone) {
+        <li [class]="color()">
+            <app-current-time [timeZone]="listedTimeZone"></app-current-time>
+            <div [class]="color()" class="button delete" (click)="deleteTimeZone(listedTimeZone)"></div>
+        </li>
+        }
+    </ul>
+    <div [class]="color()" class="button addTimeZone" (click)="addTimeZone()"></div>
+</div>
+
+<div [class]="color()" class="select-timezone-bg" [class.hidden]="!addingTimeZone()">
+    <div class="select-timezone-container">
+        <select #timeZoneSelect name="timeZoneSelect" [class]="color()" (change)="onTimeZoneChange($event)">
+            <option value="">Select a TimeZone</option>
+            @for(timeZone of timeZones; track timeZone.value) {
+            <option [value]="timeZone.value">{{ timeZone.label }}</option>
+            }
+        </select>
+        <div class="controls">
+            <div class="button" (click)="hideTimezoneSelect()">Cancel</div>
+            <div class="button" (click)="onTimeZoneSelect()">Select</div>
+        </div>
+    </div>
+</div>

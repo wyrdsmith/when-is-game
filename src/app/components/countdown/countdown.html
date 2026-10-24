@@ -1,0 +1,15 @@
+<h2>Time Until Next Game:</h2>
+<div class="container">
+    @if(timeLeft(); as time) {
+    @if(time.isGameTime) {
+    <div class="game-time">Game Time!</div>
+    } @else {
+    <div class="digit">{{ time.days }} D</div>
+    <div class="digit">{{ time.hours }} H</div>
+    <div class="digit">{{ time.minutes }} M</div>
+    <div class="digit">{{ time.seconds }} S</div>
+    }
+    } @else {
+    <div>No Game Time</div>
+    }
+</div>

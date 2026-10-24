@@ -1,0 +1,64 @@
+<header [class]="color()">
+    <h1>When is game?</h1>
+    <div class="game-time">
+        @if(gameTime()) {
+        <div class="current-game-time">Next Game: {{ getNextGameTime() | date:'MMM dd hh:mm a' }}</div>
+        } @else {
+        <div class="set-game-time" (click)="editGameTime()">Set Game Time</div>
+        }
+    </div>
+    <select name="color" [value]="color()" [class]="color()" (change)="setColor($event)">
+        <option value="white">White</option>
+        <option value="green">Green</option>
+        <option value="amber">Amber</option>
+        <option value="teal">Teal</option>
+        <option value="cyan">Cyan</option>
+        <option value="purple">Purple</option>
+        <option value="red">Red</option>
+        <option value="pink">Pink</option>
+    </select>
+</header>
+<main [class]="color()">
+    <app-core [nextGameTime]="getNextGameTime()" />
+</main>
+<footer [class]="color()">
+    <a href="/">Reset</a>
+    <div class="copyright">&copy; Wyrdsmith 2026</div>
+</footer>
+
+<div class="edit-game-time-bg" [class]="color()" [class.hidden]="!editingGameTime()">
+    <div class="edit-game-time-container">
+        <h2>Edit Game Time</h2>
+        <div class="edit-game-time">
+            <input name="time" type="time" [class]="color()" (change)="timeInputChanged($event)" />
+            <select name="month" [class]="color()" (change)="gameMonthChanged($event)">
+                <option value="">Month</option>
+                <option value="0">January</option>
+                <option value="1">February</option>
+                <option value="2">March</option>
+                <option value="3">April</option>
+                <option value="4">May</option>
+                <option value="5">June</option>
+                <option value="6">July</option>
+                <option value="7">August</option>
+                <option value="8">September</option>
+                <option value="9">October</option>
+                <option value="10">November</option>
+                <option value="11">December</option>
+            </select>
+            <input name="day" type="number" min="1" max="31" [class]="color()" (change)="gameDayChanged($event)"
+                placeholder="Day" />
+            <select name="repeat" [class]="color()" (change)="gameRepeatChanged($event)">
+                <option value="">Repeats Every</option>
+                <option value="1">1 Week</option>
+                <option value="2">2 Weeks</option>
+                <option value="3">3 Weeks</option>
+                <option value="4">4 Weeks</option>
+            </select>
+        </div>
+        <div class="controls">
+            <div class="button" [class]="color()" (click)="closeEditGameTime()">Cancel</div>
+            <div class="button" [class]="color()" (click)="saveGameTime()">Save</div>
+        </div>
+    </div>
+</div>

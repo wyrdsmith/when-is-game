@@ -1,0 +1,6 @@
+<h2>Game Start Times:</h2>
+<div class="game-times">
+    @for (timeZone of listedTimeZones(); track $index) {
+    <app-game-time [timeZone]="timeZone" [nextGameTime]="nextGameTime()"></app-game-time>
+    }
+</div>

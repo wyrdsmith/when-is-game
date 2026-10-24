@@ -1,0 +1,17 @@
+<div class="game-time-container">
+    @if (nextGameTime()) {
+    <div class="game-time-set">
+        <app-countdown [nextGameTime]="nextGameTime()" />
+        <app-game-time-list [listedTimeZones]="listedTimeZones()" [nextGameTime]="nextGameTime()" />
+    </div>
+    } @else {
+    <div class="game-time-not-set">
+        <h2>Game Time Not Set</h2>
+        <div>Click the 'Set Game Time' button in the header to set the next game session.</div>
+    </div>
+    }
+</div>
+<div class="current-time-list-container">
+    <h3>Time Zones</h3>
+    <app-current-time-list (currentTimeZones)="updateListedTimeZones($event)" />
+</div>

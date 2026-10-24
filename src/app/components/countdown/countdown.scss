@@ -1,0 +1,66 @@
+:host {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+h2 {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    font-size: 6.5em;
+    font-weight: 700;
+    flex-wrap: nowrap;
+
+    .game-time {
+        width: 100%;
+        text-align: center;
+    }
+
+    @media screen and (max-width: 1800px) {
+        font-size: 6em;
+    }
+
+    @media screen and (max-width: 1600px) {
+        font-size: 5em;
+    }
+
+    @media screen and (max-width: 1400px) {
+        font-size: 4em;
+    }
+
+    @media screen and (max-width: 1200px) {
+        font-size: 3em;
+        gap: 24px;
+    }
+
+    @media screen and (max-width: 1000px) {
+        font-size: 4em;
+    }
+
+    @media screen and (max-width: 800px) {
+        font-size: 3em;
+    }
+
+    @media screen and (max-width: 600px) {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+
+        .digit {
+            text-align: center;
+        }
+    }
+}
